@@ -1,8 +1,8 @@
-fn main() {
-   let mut s=String::from("hello");
-   change(&mut s);
-   println!("{s}");
+fn main(){
+    let width1=30;
+    let height1=50;
+    println!("The area of the rectangle is {} square pixels.",area(width1,height1));
 }
-fn change(some_string:&mut String){
-    some_string.push_str(", world!");
+fn area(width:u32,height:u32)->u32{
+    width*height
 }
