@@ -1,15 +1,10 @@
-use std::io;
-fn main() {
-    let a = [1, 2, 3, 4, 5];
-    println!("Enter an array index!");
-    let mut index = String::new();
-    io::stdin()
-        .read_line(&mut index)
-        .expect("Failed to read line");
-    let index: usize = index
-        .trim()
-        .parse()
-        .expect("index entered was not a number");
-    let element = a[index];
-    println!("The value of element at index {index} is element {element}");
+fn main(){
+    let v=vec![1,2,3,4,5];
+    let third=&v[2];
+    println!("The third element is {}",third);
+    let third=v.get(2);
+    match third {
+        Some(third)=>println!("The third element is {third}"),
+        None=>println!("There is no third element"),
+    }
 }
