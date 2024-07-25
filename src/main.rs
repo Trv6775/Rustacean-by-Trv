@@ -1,20 +1,22 @@
-// use std::collections::HashMap;
-
-// fn main() {
-//     let field_name = String::from("Favorite Color");
-//     let field_value = String::from("Blue");
-//     let mut map=HashMap::new();
-//     let m=map.insert(field_name, field_value);
-//     println!("{:?}{} {}",m)
-// }
-
-use std::collections::HashMap;
+#[derive(Debug)]
+struct Rectangle {
+    width: u16,
+    height: u16,
+}
+impl Rectangle {
+    fn square(size: u16) -> Self {
+        Self {
+            width: size,
+            height: size,
+        }
+       
+    }
+    fn area(&self)->u16{
+        self.width*self.height
+    }
+}
 fn main() {
-    let mut scores = HashMap::new();
-    // scores.insert(String::from("Blue"), 10);
-    ///The hashmap has been overwritten by 
-    /// the below hashmap
-    scores.entry(String::from("Yellow")).or_insert(50);
-    scores.entry(String::from("Blue")).or_insert(50);
-    println!("{:?}",scores);
+    let s=Rectangle::square(50);
+    let area=Rectangle::area(&s);
+    println!("The area is {:?} square pixels",area);
 }
