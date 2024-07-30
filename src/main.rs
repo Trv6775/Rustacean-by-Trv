@@ -1,17 +1,16 @@
-fn main() {
-    let mut numbers = vec![5, 6, 4, 2, 3, 2, 2, 1, 7, 9, 8];
-   numbers.sort();
-    let odd = odd_count(numbers.clone());
-    let even=even_count(numbers.clone());
-    println!("Sorted numbers is {:?},{:?}, even: {:?}",numbers, odd,even);
-}
-fn odd_count(odd_count: Vec<u8>) -> f64 {
-    let u = odd_count.len();
-    let odd_median = (u + 1) / 2;
-    odd_median as f64
-}
-fn even_count(even_count: Vec<u8>) -> f64 {
-    let q = even_count.len();
-    let even_median = ((q / 2) + ((q / 2) + 1)) / 2;
-    even_median as f64
+use std::collections::HashMap;
+use std::io;
+
+fn main(){
+    println!("Please enter the name of the employee");
+    let mut employee_name=String::new();
+    io::stdin().read_line(&mut employee_name).expect("Failed to read line");
+    let mut employee=employee_name.trim();
+    println!("Please enter the name of the department of the employee");
+    let mut department_name=String::new();
+    io::stdin().read_line(&mut department_name).expect("Failed to read line");
+    let mut department: &str=department_name.trim();
+    let mut add_employee_details=HashMap::new();
+    add_employee_details.insert(&mut employee, &mut department);
+    println!("{:?}",add_employee_details);
 }
