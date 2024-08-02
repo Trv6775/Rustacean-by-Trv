@@ -1,19 +1,14 @@
 use std::fs::File;
 use std::io::ErrorKind;
-fn main() {
-    let greeting_file_result = File::open("hello.txt");
-    let greeting_file = match greeting_file_result {
-        Ok(file) => file,
-        Err(error) => match error.kind() {
-            ErrorKind::NotFound => match File::create("hello.txt") {
-                Ok(fc) => fc,
-                Err(e) => {
-                    panic!("failed to create file {:?}", e);
-                }
-            },
-            other_kind=>{
-                panic!("problem opening the file {:?}",other_kind);
-            }
-        },
-    };
+fn main(){
+    let greeting_file=File::open("hello.txt").unwrap_or_else(|error|{
+        if error.kind()==ErrorKind::NotFound{
+            File::create("hello.txt").unwrap_or_else(|error|{
+                panic!("problem creating file {:?}",error);
+            })
+        }else {
+            panic!("problem opening file {:?}",error);
+        }
+    });
+    println!("{:?}",greeting_file);
 }
