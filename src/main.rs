@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::{self, Read};
+use std::io::{self,Read};
 
 fn main() {
     let u = read_username_from_file();
