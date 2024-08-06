@@ -1,10 +1,17 @@
-fn main(){
-    let number_list=vec![34,50,25,100,65];
-    let mut largest_number=&number_list[0];
-    for number in &number_list{
-        if number>largest_number{
-            largest_number=number;
+fn largest(list:&[i32])->&i32{
+    let mut largest=&list[0];
+    for item in list{
+        if item>largest{
+            largest=item;
         }
     }
-    println!("The largest number is {largest_number}");
+    largest
+}
+fn main(){
+    let number_list=vec![2,3,4,6];
+    let result=largest(&number_list);
+    println!("The larget number is {result}");
+    let number_list=vec![2000,3,400,60];
+    let result=largest(&number_list);
+    println!("The larget number is {result}");
 }
