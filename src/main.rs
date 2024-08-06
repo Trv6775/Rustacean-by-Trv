@@ -1,3 +1,4 @@
+use my_project::Guess;
 use rand::Rng;
 use std::{cmp::Ordering, io};
 fn main() {
@@ -17,10 +18,11 @@ fn main() {
                 continue;
             }
         };
-        if guess<1||guess>100{
-            println!("The secret number will be between 1 and 100");
-            continue;
-        }
+        // if guess<1||guess>100{
+        //     println!("The secret number will be between 1 and 100");
+        //     continue;
+        // }
+        Guess::new(guess);
         match guess.cmp(&secret_number) {
             Ordering::Greater => println!("Too big"),
             Ordering::Less => println!("Too small"),
