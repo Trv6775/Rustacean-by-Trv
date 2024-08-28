@@ -1,5 +1,8 @@
 use std::env;
-fn main() {
+fn main(){
     let args:Vec<String>=env::args().collect();
-    dbg!(args);
+    let query=&args[1];
+    let file_path=&args[2];
+    println!("Seaching for {}",query);
+    println!("In file {}",file_path);
 }
