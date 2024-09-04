@@ -1,15 +1,14 @@
-#[derive(Debug)]
-struct Rectangle{
-    width:u32,
-    height:u32,
-}
+use std::{env, process};
+use fuctiona_language::Config;
 
-fn main() {
-    let mut list = [
-        Rectangle{width:10,height:1},
-        Rectangle{width:3,height:5},
-        Rectangle{width:7,height:12},
-    ];
-    list.sort_by_key(|r|r.width);
-    println!("{:?}",list);
+fn main(){
+    // let args:Vec<String>=env::args().collect();
+    let config=Config::build(env::args()).unwrap_or_else(|err|{
+        eprintln!("Problem parsing arguments: {err}");
+        process::exit(1);
+    });
+    if let Err(e)=fuctiona_language::run(config){
+        eprintln!("Application error: {e}");
+        process::exit(1);
+    }
 }
