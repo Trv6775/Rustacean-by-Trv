@@ -1,7 +1,4 @@
-#[no_mangle]
-extern "C" fn call_from_c(){
-    println!("Just called a Rust function from C");
-}
+static HELLO_WORLD:&str="Hello World!";
 fn main(){
-    call_from_c();
+    println!("value is: {}",HELLO_WORLD);
 }
